@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "xefx2YGbLLo=",
+  "success": true,
+  "projectFilePath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Api/IssueTracker.Api.csproj",
+  "expectedPackageFiles": [
+    "/Users/christabelleshiba/.nuget/packages/amazon.lambda.apigatewayevents/2.6.0/amazon.lambda.apigatewayevents.2.6.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/amazon.lambda.core/2.2.0/amazon.lambda.core.2.2.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/amazon.lambda.serialization.systemtextjson/2.4.0/amazon.lambda.serialization.systemtextjson.2.4.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/awssdk.core/3.7.300/awssdk.core.3.7.300.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/awssdk.dynamodbv2/3.7.300/awssdk.dynamodbv2.3.7.300.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/fluentvalidation/11.9.0/fluentvalidation.11.9.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.configuration/8.0.0/microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.configuration.binder/8.0.0/microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.logging.configuration/8.0.0/microsoft.extensions.logging.configuration.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.logging.console/8.0.0/microsoft.extensions.logging.console.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.options.configurationextensions/8.0.0/microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.netcore.app.crossgen2.osx-arm64/8.0.23/microsoft.netcore.app.crossgen2.osx-arm64.8.0.23.nupkg.sha512"
+  ],
+  "logs": []
+}
