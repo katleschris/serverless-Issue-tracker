@@ -39,7 +39,7 @@ public class CreateIssueHandler
         APIGatewayProxyRequest request,
         ILambdaContext context)
     {
-        context.Logger.LogInformation($"Processing CreateIssue - RequestId: {context.RequestId}");
+        context.Logger.LogInformation($"Processing CreateIssue - RequestId: {context.AwsRequestId}");
 
         try
         {

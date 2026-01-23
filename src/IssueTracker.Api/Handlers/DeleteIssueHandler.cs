@@ -26,7 +26,7 @@ public class DeleteIssueHandler
         APIGatewayProxyRequest request,
         ILambdaContext context)
     {
-        context.Logger.LogInformation($"DeleteIssue - RequestId: {context.RequestId}");
+        context.Logger.LogInformation($"DeleteIssue - RequestId: {context.AwsRequestId}");
 
         try
         {

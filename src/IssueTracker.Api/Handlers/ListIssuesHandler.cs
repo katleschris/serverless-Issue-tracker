@@ -27,7 +27,7 @@ public class ListIssuesHandler
         APIGatewayProxyRequest request,
         ILambdaContext context)
     {
-        context.Logger.LogInformation($"ListIssues - RequestId: {context.RequestId}");
+        context.Logger.LogInformation($"ListIssues - RequestId: {context.AwsRequestId}");
 
         try
         {

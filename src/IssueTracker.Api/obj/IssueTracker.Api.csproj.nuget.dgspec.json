@@ -97,7 +97,15 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Crossgen2.osx-arm64",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
               "version": "[8.0.23, 8.0.23]"
             }
           ],
@@ -107,6 +115,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     },
@@ -176,6 +189,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     },
@@ -249,6 +267,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     }

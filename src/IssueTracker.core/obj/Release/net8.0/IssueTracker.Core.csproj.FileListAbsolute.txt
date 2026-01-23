@@ -1,0 +1,15 @@
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/bin/Release/net8.0/IssueTracker.Core.deps.json
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/bin/Release/net8.0/IssueTracker.Core.runtimeconfig.json
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/bin/Release/net8.0/IssueTracker.Core.dll
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/bin/Release/net8.0/IssueTracker.Core.pdb
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/IssueTracker.Core.csproj.AssemblyReference.cache
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/IssueTracker.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/IssueTracker.Core.AssemblyInfoInputs.cache
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/IssueTracker.Core.AssemblyInfo.cs
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/IssueTracker.Core.csproj.CoreCompileInputs.cache
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/IssueTracker.Core.sourcelink.json
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/IssueTracker.Core.dll
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/refint/IssueTracker.Core.dll
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/Release/net8.0/IssueTracker.Core.pdb
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/obj/Release/net8.0/IssueTracker.Core.genruntimeconfig.cache
+/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/obj/Release/net8.0/ref/IssueTracker.Core.dll

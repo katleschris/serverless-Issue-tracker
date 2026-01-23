@@ -1,0 +1,182 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless Issue Tracker API
+
+# Global settings for ALL functions
+Globals:
+  Function:
+    Runtime: dotnet8
+    Architectures:
+      - x86_64
+    MemorySize: 512
+    Timeout: 30
+    Environment:
+      Variables:
+        ISSUES_TABLE_NAME: !Ref IssuesTable
+    Tracing: Active
+
+Resources:
+  # ============================================
+  # DYNAMODB TABLE
+  # ============================================
+  IssuesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: IssueTrackerTable
+      BillingMode: PAY_PER_REQUEST  # Pay only for what you use
+      
+      # Define keys (PK = Partition Key, SK = Sort Key)
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+        - AttributeName: GSI1PK
+          AttributeType: S
+        - AttributeName: GSI1SK
+          AttributeType: S
+      
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH   # Partition key
+        - AttributeName: SK
+          KeyType: RANGE  # Sort key
+      
+      # GSI for querying by status
+      GlobalSecondaryIndexes:
+        - IndexName: GSI1
+          KeySchema:
+            - AttributeName: GSI1PK
+              KeyType: HASH
+            - AttributeName: GSI1SK
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+      
+      # Enable backups
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+
+  # ============================================
+  # API GATEWAY
+  # ============================================
+  IssueTrackerApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors:
+        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+        AllowOrigin: "'*'"
+      TracingEnabled: true
+
+  # ============================================
+  # LAMBDA FUNCTIONS
+  # ============================================
+  
+  # CREATE: POST /issues
+  CreateIssueFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: IssueTracker-CreateIssue
+      Handler: IssueTracker.Api::IssueTracker.Api.Handlers.CreateIssueHandler::HandleAsync
+      CodeUri: ./src/IssueTracker.Api/
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref IssuesTable
+      Events:
+        CreateIssue:
+          Type: Api
+          Properties:
+            RestApiId: !Ref IssueTrackerApi
+            Path: /issues
+            Method: POST
+
+  # GET ONE: GET /issues/{id}
+  GetIssueFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: IssueTracker-GetIssue
+      Handler: IssueTracker.Api::IssueTracker.Api.Handlers.GetIssueHandler::HandleAsync
+      CodeUri: ./src/IssueTracker.Api/
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref IssuesTable
+      Events:
+        GetIssue:
+          Type: Api
+          Properties:
+            RestApiId: !Ref IssueTrackerApi
+            Path: /issues/{id}
+            Method: GET
+
+  # LIST: GET /issues
+  ListIssuesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: IssueTracker-ListIssues
+      Handler: IssueTracker.Api::IssueTracker.Api.Handlers.ListIssuesHandler::HandleAsync
+      CodeUri: ./src/IssueTracker.Api/
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref IssuesTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:Query
+              Resource: !Sub '${IssuesTable.Arn}/index/*'
+      Events:
+        ListIssues:
+          Type: Api
+          Properties:
+            RestApiId: !Ref IssueTrackerApi
+            Path: /issues
+            Method: GET
+
+  # UPDATE: PUT /issues/{id}
+  UpdateIssueFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: IssueTracker-UpdateIssue
+      Handler: IssueTracker.Api::IssueTracker.Api.Handlers.UpdateIssueHandler::HandleAsync
+      CodeUri: ./src/IssueTracker.Api/
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref IssuesTable
+      Events:
+        UpdateIssue:
+          Type: Api
+          Properties:
+            RestApiId: !Ref IssueTrackerApi
+            Path: /issues/{id}
+            Method: PUT
+
+  # DELETE: DELETE /issues/{id}
+  DeleteIssueFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: IssueTracker-DeleteIssue
+      Handler: IssueTracker.Api::IssueTracker.Api.Handlers.DeleteIssueHandler::HandleAsync
+      CodeUri: ./src/IssueTracker.Api/
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref IssuesTable
+      Events:
+        DeleteIssue:
+          Type: Api
+          Properties:
+            RestApiId: !Ref IssueTrackerApi
+            Path: /issues/{id}
+            Method: DELETE
+
+# ============================================
+# OUTPUTS (shown after deployment)
+# ============================================
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value: !Sub 'https://${IssueTrackerApi}.execute-api.${AWS::Region}.amazonaws.com/prod/'
+  
+  IssuesTableName:
+    Description: DynamoDB table name
+    Value: !Ref IssuesTable
