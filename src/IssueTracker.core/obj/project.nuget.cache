@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "YkoQ0nghn2w=",
+  "success": true,
+  "projectFilePath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj",
+  "expectedPackageFiles": [
+    "/Users/christabelleshiba/.nuget/packages/fluentvalidation/11.9.0/fluentvalidation.11.9.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
