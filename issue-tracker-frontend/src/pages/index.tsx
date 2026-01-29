@@ -1,45 +1,77 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement } from 'react';
 import Head from 'next/head';
 import { Plus, Filter, RefreshCw, AlertCircle } from 'lucide-react';
 import { issueApi } from '@/lib/api';
 import IssueCard from '@/components/IssueCard';
 import CreateIssueForm from '@/components/CreateIssueForm';
 
-export default function Home() {
-  const [issues, setIssues] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [statusFilter, setStatusFilter] = useState('All');
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+type IssueStatus = 'Open' | 'InProgress' | 'Done' | 'All';
+
+interface Issue {
+  id: string;
+  title: string;
+  description: string;
+  status: 'Open' | 'InProgress' | 'Done';
+  priority: 'Low' | 'Medium' | 'High';
+  createdAt: string;
+}
+
+interface ApiResponse<T> {
+  success: boolean;
+  data?: T;
+  error?: {
+    message: string;
+  };
+}
+
+interface FormData {
+  title: string;
+  description: string;
+  priority: 'Low' | 'Medium' | 'High';
+}
+
+interface Stats {
+  total: number;
+  open: number;
+  inProgress: number;
+  done: number;
+}
+
+export default function Home(): ReactElement {
+  const [issues, setIssues] = useState<Issue[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [statusFilter, setStatusFilter] = useState<IssueStatus>('All');
+  const [showCreateForm, setShowCreateForm] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string>('');
 
   // Load issues on mount and when filter changes
   useEffect(() => {
     loadIssues();
   }, [statusFilter]);
 
-  const loadIssues = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      const filterValue = statusFilter === 'All' ? null : statusFilter;
-      const response = await issueApi.getAllIssues(filterValue);
+ const loadIssues = async (): Promise<void> => {
+  try {
+    setLoading(true);
+    setError(null);
 
-      if (response.success) {
-        setIssues(response.data || []);
-      } else {
-        setError(response.error?.message || 'Failed to load issues');
-      }
-    } catch (err) {
-      console.error('Error loading issues:', err);
-      setError('Failed to connect to the API. Make sure the backend is deployed.');
-    } finally {
-      setLoading(false);
+    const filterValue = statusFilter === 'All' ? undefined : statusFilter;
+    const response = await issueApi.getAllIssues(filterValue);
+
+    if (response.success) {
+      setIssues(response.data || []);
+    } else {
+      setError(response.error?.message || 'Failed to load issues');
     }
-  };
+  } catch (err) {
+    console.error('Error loading issues:', err);
+    setError('Failed to connect to the API. Make sure the backend is deployed.');
+  } finally {
+    setLoading(false);
+  }
+};
 
-  const handleCreateIssue = async (issueData) => {
+  const handleCreateIssue = async (issueData: FormData): Promise<void> => {
     try {
       const response = await issueApi.createIssue(issueData);
 
@@ -56,7 +88,7 @@ export default function Home() {
     }
   };
 
-  const handleStatusChange = async (id, newStatus) => {
+  const handleStatusChange = async (id: string, newStatus: string): Promise<void> => {
     try {
       const response = await issueApi.updateIssue(id, { status: newStatus });
 
@@ -72,7 +104,7 @@ export default function Home() {
     }
   };
 
-  const handleDeleteIssue = async (id) => {
+  const handleDeleteIssue = async (id: string): Promise<void> => {
     if (!window.confirm('Are you sure you want to delete this issue?')) {
       return;
     }
@@ -92,12 +124,12 @@ export default function Home() {
     }
   };
 
-  const showSuccess = (message) => {
+  const showSuccess = (message: string): void => {
     setSuccessMessage(message);
     setTimeout(() => setSuccessMessage(''), 3000);
   };
 
-  const stats = {
+  const stats: Stats = {
     total: issues.length,
     open: issues.filter((i) => i.status === 'Open').length,
     inProgress: issues.filter((i) => i.status === 'InProgress').length,
@@ -163,7 +195,7 @@ export default function Home() {
               <Filter size={20} className="text-gray-600" />
               <select
                 value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
+                onChange={(e) => setStatusFilter(e.target.value as IssueStatus)}
                 className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="All">All Status</option>

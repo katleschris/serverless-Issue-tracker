@@ -1,16 +1,31 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent, FC } from 'react';
 import { Plus, X } from 'lucide-react';
 
-const CreateIssueForm = ({ onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  title: string;
+  description: string;
+  priority: 'Low' | 'Medium' | 'High';
+}
+
+interface FormErrors {
+  [key: string]: string | null;
+}
+
+interface CreateIssueFormProps {
+  onSubmit: (formData: FormData) => void;
+  onCancel: () => void;
+}
+
+const CreateIssueForm: FC<CreateIssueFormProps> = ({ onSubmit, onCancel }) => {
+  const [formData, setFormData] = useState<FormData>({
     title: '',
     description: '',
     priority: 'Medium',
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormErrors>({});
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>): void => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -22,8 +37,8 @@ const CreateIssueForm = ({ onSubmit, onCancel }) => {
     }
   };
 
-  const validate = () => {
-    const newErrors = {};
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
 
     if (!formData.title.trim()) {
       newErrors.title = 'Title is required';
@@ -41,7 +56,7 @@ const CreateIssueForm = ({ onSubmit, onCancel }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     if (validate()) {
@@ -102,7 +117,7 @@ const CreateIssueForm = ({ onSubmit, onCancel }) => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              rows="4"
+              rows={4}
               className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                 errors.description ? 'border-red-500' : 'border-gray-300'
               }`}

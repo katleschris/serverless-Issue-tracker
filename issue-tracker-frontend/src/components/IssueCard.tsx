@@ -1,7 +1,26 @@
 import { Trash2, Clock, AlertCircle } from 'lucide-react';
+import { FC } from 'react';
 
-const IssueCard = ({ issue, onStatusChange, onDelete }) => {
-  const getStatusColor = (status) => {
+type IssueStatus = 'Open' | 'InProgress' | 'Done';
+type IssuePriority = 'Low' | 'Medium' | 'High';
+
+interface Issue {
+  id: string;
+  title: string;
+  description: string;
+  status: IssueStatus;
+  priority: IssuePriority;
+  createdAt: string;
+}
+
+interface IssueCardProps {
+  issue: Issue;
+  onStatusChange: (id: string, status: IssueStatus) => void;
+  onDelete: (id: string) => void;
+}
+
+const IssueCard: FC<IssueCardProps> = ({ issue, onStatusChange, onDelete }) => {
+  const getStatusColor = (status: IssueStatus): string => {
     switch (status) {
       case 'Open':
         return 'bg-blue-100 text-blue-800 border-blue-200';
@@ -14,7 +33,7 @@ const IssueCard = ({ issue, onStatusChange, onDelete }) => {
     }
   };
 
-  const getPriorityColor = (priority) => {
+  const getPriorityColor = (priority: IssuePriority): string => {
     switch (priority) {
       case 'High':
         return 'text-red-600';
@@ -27,7 +46,7 @@ const IssueCard = ({ issue, onStatusChange, onDelete }) => {
     }
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string): string => {
     return new Date(dateString).toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
@@ -60,7 +79,7 @@ const IssueCard = ({ issue, onStatusChange, onDelete }) => {
       <div className="flex gap-2 mb-4">
         <select
           value={issue.status}
-          onChange={(e) => onStatusChange(issue.id, e.target.value)}
+          onChange={(e) => onStatusChange(issue.id, e.target.value as IssueStatus)}
           className={`px-3 py-1 rounded-full text-sm font-medium border ${getStatusColor(
             issue.status
           )} cursor-pointer hover:opacity-80 transition-opacity`}
