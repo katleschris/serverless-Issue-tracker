@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IssueTracker.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89464f25625ffbbe893778f4ac522f6e03970420")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66c0aa7e87715c40d9385f31731d123d9a2238d0")]
 [assembly: System.Reflection.AssemblyProductAttribute("IssueTracker.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IssueTracker.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

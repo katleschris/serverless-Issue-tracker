@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj": {
-                "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj"
+              "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj": {
+                "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj"
               },
               "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Infrastructure/IssueTracker.Infrastructure.csproj": {
                 "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Infrastructure/IssueTracker.Infrastructure.csproj"
@@ -97,7 +97,15 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Crossgen2.osx-arm64",
+              "version": "[8.0.23, 8.0.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
               "version": "[8.0.23, 8.0.23]"
             }
           ],
@@ -108,16 +116,21 @@
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.102/PortableRuntimeIdentifierGraph.json"
         }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
+        }
       }
     },
-    "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj": {
+    "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj",
+        "projectUniqueName": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj",
         "projectName": "IssueTracker.Core",
-        "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj",
+        "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj",
         "packagesPath": "/Users/christabelleshiba/.nuget/packages/",
-        "outputPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/",
+        "outputPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/christabelleshiba/.nuget/NuGet/NuGet.Config"
@@ -177,6 +190,11 @@
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.102/PortableRuntimeIdentifierGraph.json"
         }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
+        }
       }
     },
     "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Infrastructure/IssueTracker.Infrastructure.csproj": {
@@ -201,8 +219,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj": {
-                "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj"
+              "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj": {
+                "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj"
               }
             }
           }
@@ -249,6 +267,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     }
