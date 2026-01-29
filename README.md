@@ -6,8 +6,7 @@ A full-stack serverless issue tracking application built with AWS Lambda, Dynamo
 
 This application provides a complete issue tracking system with CRUD operations, status filtering, and real-time updates. It's built entirely on serverless technologies, making it scalable, cost-effective, and easy to maintain.
 
-**Live Frontend:** `localhost:3000` (development)
-**Live API:** `https://jevhd4eqia.execute-api.af-south-1.amazonaws.com/prod/`
+![Application Screenshot](docs/app-screenshot.png)
 
 ## Architecture
 
@@ -70,6 +69,8 @@ serverless-Issue-tracker/
 │   │       └── globals.css
 │   ├── package.json
 │   └── next.config.ts
+├── docs/                            # Documentation and assets
+│   └── app-screenshot.png
 ├── template.yaml                    # AWS SAM infrastructure template
 ├── samconfig.toml                   # SAM deployment configuration
 └── README.md                        # This file
@@ -117,7 +118,7 @@ sam deploy --guided
 
 During the guided deployment, you'll be prompted to configure:
 - Stack name (default: `issue-tracker`)
-- AWS Region (currently: `af-south-1`)
+- AWS Region (choose your preferred region)
 - Confirm changes before deploy
 - Allow SAM CLI IAM role creation
 - Save arguments to configuration file
@@ -203,9 +204,12 @@ npm run lint
 ## API Documentation
 
 ### Base URL
+After deployment, your API will be available at:
 ```
-https://jevhd4eqia.execute-api.af-south-1.amazonaws.com/prod/
+https://{api-id}.execute-api.{region}.amazonaws.com/prod/
 ```
+
+The actual URL will be provided in the SAM deployment outputs.
 
 ### Endpoints
 
