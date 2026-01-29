@@ -1,34 +1,11 @@
-import { useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect, useCallback, ReactElement } from 'react';
 import Head from 'next/head';
 import { Plus, Filter, RefreshCw, AlertCircle } from 'lucide-react';
-import { issueApi } from '@/lib/api';
+import { issueApi, Issue, IssueStatus, CreateIssueData } from '@/lib/api';
 import IssueCard from '@/components/IssueCard';
 import CreateIssueForm from '@/components/CreateIssueForm';
 
-type IssueStatus = 'Open' | 'InProgress' | 'Done' | 'All';
-
-interface Issue {
-  id: string;
-  title: string;
-  description: string;
-  status: 'Open' | 'InProgress' | 'Done';
-  priority: 'Low' | 'Medium' | 'High';
-  createdAt: string;
-}
-
-interface ApiResponse<T> {
-  success: boolean;
-  data?: T;
-  error?: {
-    message: string;
-  };
-}
-
-interface FormData {
-  title: string;
-  description: string;
-  priority: 'Low' | 'Medium' | 'High';
-}
+type IssueStatusFilter = IssueStatus | 'All';
 
 interface Stats {
   total: number;
@@ -41,37 +18,37 @@ export default function Home(): ReactElement {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [statusFilter, setStatusFilter] = useState<IssueStatus>('All');
+  const [statusFilter, setStatusFilter] = useState<IssueStatusFilter>('All');
   const [showCreateForm, setShowCreateForm] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>('');
+
+  const loadIssues = useCallback(async (): Promise<void> => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const filterValue = statusFilter === 'All' ? null : statusFilter;
+      const response = await issueApi.getAllIssues(filterValue);
+
+      if (response.success) {
+        setIssues(response.data || []);
+      } else {
+        setError(response.error?.message || 'Failed to load issues');
+      }
+    } catch (err) {
+      console.error('Error loading issues:', err);
+      setError('Failed to connect to the API. Make sure the backend is deployed.');
+    } finally {
+      setLoading(false);
+    }
+  }, [statusFilter]);
 
   // Load issues on mount and when filter changes
   useEffect(() => {
     loadIssues();
-  }, [statusFilter]);
+  }, [loadIssues]);
 
- const loadIssues = async (): Promise<void> => {
-  try {
-    setLoading(true);
-    setError(null);
-
-    const filterValue = statusFilter === 'All' ? undefined : statusFilter;
-    const response = await issueApi.getAllIssues(filterValue);
-
-    if (response.success) {
-      setIssues(response.data || []);
-    } else {
-      setError(response.error?.message || 'Failed to load issues');
-    }
-  } catch (err) {
-    console.error('Error loading issues:', err);
-    setError('Failed to connect to the API. Make sure the backend is deployed.');
-  } finally {
-    setLoading(false);
-  }
-};
-
-  const handleCreateIssue = async (issueData: FormData): Promise<void> => {
+  const handleCreateIssue = async (issueData: CreateIssueData): Promise<void> => {
     try {
       const response = await issueApi.createIssue(issueData);
 
@@ -195,7 +172,7 @@ export default function Home(): ReactElement {
               <Filter size={20} className="text-gray-600" />
               <select
                 value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value as IssueStatus)}
+                onChange={(e) => setStatusFilter(e.target.value as IssueStatusFilter)}
                 className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="All">All Status</option>
