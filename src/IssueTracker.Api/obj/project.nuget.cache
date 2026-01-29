@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5RL9zRcK/A8=",
+  "dgSpecHash": "xSBLLnbapfQ=",
   "success": true,
   "projectFilePath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Api/IssueTracker.Api.csproj",
   "expectedPackageFiles": [
@@ -24,8 +24,6 @@
     "/Users/christabelleshiba/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "/Users/christabelleshiba/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
     "/Users/christabelleshiba/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512",
-    "/Users/christabelleshiba/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/8.0.23/microsoft.netcore.app.runtime.linux-x64.8.0.23.nupkg.sha512",
-    "/Users/christabelleshiba/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/8.0.23/microsoft.aspnetcore.app.runtime.linux-x64.8.0.23.nupkg.sha512",
     "/Users/christabelleshiba/.nuget/packages/microsoft.netcore.app.crossgen2.osx-arm64/8.0.23/microsoft.netcore.app.crossgen2.osx-arm64.8.0.23.nupkg.sha512"
   ],
   "logs": []

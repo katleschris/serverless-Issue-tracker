@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj": {}
+    "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj": {}
   },
   "projects": {
-    "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj": {
+    "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj",
+        "projectUniqueName": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj",
         "projectName": "IssueTracker.Core",
-        "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/IssueTracker.Core.csproj",
+        "projectPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/IssueTracker.Core.csproj",
         "packagesPath": "/Users/christabelleshiba/.nuget/packages/",
-        "outputPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.Core/obj/",
+        "outputPath": "/Users/christabelleshiba/Desktop/serverless-Issue-tracker/src/IssueTracker.core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/christabelleshiba/.nuget/NuGet/NuGet.Config"
@@ -70,11 +70,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.102/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "linux-x64": {
-          "#import": []
         }
       }
     }
